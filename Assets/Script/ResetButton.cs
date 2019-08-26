@@ -9,6 +9,8 @@ public class ResetButton : MonoBehaviour
     GameObject car;
     Vector3 resetPosition = new Vector3(25f, 0f, 25f);
     Quaternion rotatePosition = new Quaternion();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class ResetButton : MonoBehaviour
 
         //car.transform.position = resetPosition;
         //car.transform.rotation = rotatePosition;
+        TimerScript.timer = 40;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
