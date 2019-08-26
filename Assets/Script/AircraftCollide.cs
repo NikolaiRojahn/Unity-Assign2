@@ -6,13 +6,11 @@ using UnityEngine.UI;
 public class AircraftCollide : MonoBehaviour
 {
     float count;
-    Text countText;
+    public Text t;
     // Start is called before the first frame update
     void Start()
     {
         count = 0;
-        setCountText(0);
-        countText = GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -23,23 +21,19 @@ public class AircraftCollide : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Cube"))
+        if (other.gameObject.tag == "Cube")
         {
             Destroy(other.gameObject);
             print("Collision with game point.");
             gameObject.GetComponent<AudioSource>().Play();
+
+            count++;
             
-            setCountText(1);
-        } else
+        }
         {
-            print("Collision with the plane.");
+            t.text = "Score: " + count;
         }
     }
 
-    public void setCountText(float increase)
-    {
-        count = count + increase;
-        countText.text = "Count: " + count.ToString();
-    }
 
 }
